@@ -342,7 +342,8 @@ export const updateDegree = async (req, res) => {
                 inputbook: degree.inputbook,
                 image: degree.image,
             }
-        }, { new: true, session });
+            // }, { new: true, session });
+        }, { new: true });
 
         await session.commitTransaction();
         session.endSession();

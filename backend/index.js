@@ -30,19 +30,18 @@ const port = process.env.PORT || 8000;
 mongoose.set("strictQuery", false);
 const connect = async () => {
   try {
-    // await mongoose.connect(process.env.mongoURI, {
-    //   serverSelectionTimeoutMS: 30000, // Tăng thời gian chờ lên 30 giây
-    //   socketTimeoutMS: 45000, // Tăng thời gian chờ cho socket lên 45 giây
-    //   useNewUrlParser: true,
-    //   useUnifiedTopology: true,
-    // });
-    await mongoose.connect('mongodb://127.0.0.1:27017/myapp', {
-      // serverSelectionTimeoutMS: 30000, // Tăng thời gian chờ lên 30 giây
-      // socketTimeoutMS: 45000, // Tăng thời gian chờ cho socket lên 45 giây
+    await mongoose.connect(process.env.mongoURI, {
+      serverSelectionTimeoutMS: 30000, // Tăng thời gian chờ lên 30 giây
+      socketTimeoutMS: 45000, // Tăng thời gian chờ cho socket lên 45 giây
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    // await mongoose.connect('mongodb://127.0.0.1:27017/myapp');
+    // await mongoose.connect('mongodb://127.0.0.1:27017/myapp', {
+    //   // serverSelectionTimeoutMS: 30000, // Tăng thời gian chờ lên 30 giây
+    //   // socketTimeoutMS: 45000, // Tăng thời gian chờ cho socket lên 45 giây
+    //   useNewUrlParser: true,
+    //   useUnifiedTopology: true,
+    // });
     console.log("Mongo database Connected Success!!!");
   } catch (error) {
     console.log("Mongo database connection failed", error);
@@ -78,9 +77,9 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: true, parameterLimit: 1
 // loadNetwork("Org1MSP");
 await fabric_initial_system("Org1MSP");
 await create_user("appUser", 'admin');
-await create_user("rector@gmail.com", 'rector');
-await create_user("anhvh1412@gmail.com", 'admin');
-await create_user("anhg1906001@gmail.com", "teacher"); // create teacher
+// await create_user("rector@gmail.com", 'rector');
+// await create_user("anhvh1412@gmail.com", 'admin');
+// await create_user("anhg1906001@gmail.com", "teacher"); // create teacher
 // create NFT smart contract
 await InitializeNFT();
 // // testConnect();

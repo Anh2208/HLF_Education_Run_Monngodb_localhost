@@ -58,7 +58,7 @@ export const createResultBlock = async (req, res) => {
     const contract = network.getContract(chaincodeName);
 
     try {
-      console.log("ahahaha1");
+      // console.log("ahahaha1");
       await Result.findByIdAndUpdate(ID, { $set: req.body.data });
       // await Result.findByIdAndUpdate(ID, { $set: req.body.data }, { new: true, session });
 
@@ -669,7 +669,7 @@ export const updateResult = async (req, res) => {
 
     //update result in mongodb
     // const updateResult = await Result.findByIdAndUpdate(id, { $set: req.body.data }, { new: true, session });
-    const updateResult = await Result.findByIdAndUpdate(id, { $set: req.body.data });
+    const updateResult = await Result.findByIdAndUpdate(id, { $set: req.body.data }, { new: true });
 
     await Result.findById(updateResult);
 
